@@ -9,7 +9,7 @@
   // Requirements:
     // Simulation time = one day.
     // Timestep = Every 5 minutes
-    // Record Voltage, current, and power (both watts and VA) of the triplex section of the feeder
+    // Record Voltage, current, and power (both watts and VA) on the triplex section of the feeder
 
   // Water heater parameters:
     // location is inside the house.
