@@ -1,3 +1,4 @@
+// This is the original IEEE 4 Node test feeder
 // Exercise
 
 // tasks:
@@ -9,7 +10,7 @@
   // Requirements:
     // Simulation time = one day.
     // Timestep = Every 5 minutes
-    // Record Voltage, current, and power (both watts and VA) on the triplex section of the feeder
+    // Record Voltage, current, and power (both watts and VA) of the triplex section of the feeder
 
   // Water heater parameters:
     // location is inside the house.
@@ -53,7 +54,6 @@ object line_configuration {
 	conductor_N OH101;
 	spacing LS200;
 }
-
 object line_spacing {
 	name LS200;
 	distance_AB 2.5;
@@ -63,21 +63,16 @@ object line_spacing {
 	distance_BN 4.272002;
 	distance_CN 5.0;
 }
-
-
 object overhead_line_conductor {
 	name OH100;
 	geometric_mean_radius 0.0244;
 	resistance 0.306;
 }
-
 object overhead_line_conductor {
 	name OH101;
 	geometric_mean_radius 0.00814;
 	resistance 0.592;
 }
-
-
 object transformer_configuration {
 	name XFC400;
 	connect_type 2;
@@ -87,7 +82,6 @@ object transformer_configuration {
 	resistance 0.01;
 	reactance 0.06;
 }
-
 object transformer_configuration {
 	name PoleTop;
 	connect_type SINGLE_PHASE_CENTER_TAPPED;
@@ -98,8 +92,6 @@ object transformer_configuration {
 	resistance 0.01;
 	reactance 0.06;
 }
-
-
 object triplex_line_configuration {
       name triplex_line_config;
       conductor_1 Name_1_0_AA_triplex;
@@ -113,9 +105,6 @@ object triplex_line_conductor {
       resistance 0.57;
       geometric_mean_radius 0.0111;
 }
-
-
-//feeder head
 
 object node {
 	name Node1;
@@ -159,16 +148,6 @@ object meter {
       phases ABCN;
       nominal_voltage 4160;
 }
-object recorder{
-	name substation_meter_pl;
-	parent substation_meter;
-	property measured_voltage_A,measured_voltage_B,measured_voltage_C,measured_power;
-	file substation_meter_data.csv;
-	interval 600;
-	limit 525600;
-  }
-
-//Branch 1
 
 object overhead_line {
 	name branch;
@@ -181,7 +160,7 @@ object overhead_line {
 }
 object node {
 	name Node3;
-	phases A|B|C;  										//Delta connected phases
+	phases A|B|C;
 	voltage_A +2401.777+0.000j;
 	voltage_B -1200.889-2080.000j;
 	voltage_C -1200.889+2080.000j;
@@ -200,7 +179,7 @@ object overhead_line {
 
 object node {
 	name Node4;
-	phases A|B|C;  										//Delta connected phases
+	phases A|B|C;
 	voltage_A +2401.777+0.000j;
 	voltage_B -1200.889-2080.000j;
 	voltage_C -1200.889+2080.000j;
