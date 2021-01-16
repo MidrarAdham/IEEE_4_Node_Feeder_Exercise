@@ -40,7 +40,7 @@ module residential {
 
 clock {
 	timestamp '2010-01-01 0:00:00';
-	stoptime '2010-12-31 23:50:00';
+	stoptime '2010-02-01 00:00:00';
 	timezone PST+8PDT;
 }
 // IEEE 4 Node Feeder: Balanced step-down delta-delta
@@ -183,4 +183,8 @@ object node {
 	voltage_B -1200.889-2080.000j;
 	voltage_C -1200.889+2080.000j;
 	nominal_voltage 4160;
+}
+
+object house {
+	floor_area random.uniform(1500,2500);
 }
