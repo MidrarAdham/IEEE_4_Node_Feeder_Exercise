@@ -200,5 +200,5 @@ object player {
 	property
 	limit ...
 	interval 300
-	file"...csv"
+	file output.csv
 }
