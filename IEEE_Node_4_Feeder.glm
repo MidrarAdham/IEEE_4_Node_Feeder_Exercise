@@ -189,5 +189,16 @@ object node {
 }
 
 object house {
-	floor_area random.uniform(1500,2500);
+	name house1
+//  panel.power_factor 0.98
+	floor_area random.uniform(2500,100) sf;
+
+}
+
+object player {
+	parent house1
+	property
+	limit ...
+	interval 300
+	file"...csv"
 }
