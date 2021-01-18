@@ -205,6 +205,21 @@ object house {
 
 }
 
+object waterheater {
+parent house1;
+name my_waterheater;
+temperature 120;
+tank_volume 50;  // tank volume in gallons
+thermostat_deadband 2;
+heating_element_capacity 4.5 kW;
+water_demand 0.5;
+inlet_water_temperature 60;
+tank_UA 3.3;
+
+tank_setpoint my_setpoint;  // dunno if i need this
+
+}
+
 object multi_recorder {
 	parent house1
 	property mr_meter: measured_power.real, measured_current, measured_voltage;
