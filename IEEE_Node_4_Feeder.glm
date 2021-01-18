@@ -188,16 +188,26 @@ object node {
 	nominal_voltage 4160;
 }
 
+//// here are the stuff I added
+
+object triplex_meter{
+	name mr_meter
+	phases CS;
+	nominal voltage 120;
+
+}
+
 object house {
 	name house1
 //  panel.power_factor 0.98
 	floor_area random.uniform(2500,100) sf;
+	parent mr_meter
 
 }
 
-object player {
+object multi_recorder {
 	parent house1
-	property
+	property mr_meter: measured_power.real, measured_current, measured_voltage;
 	limit ...
 	interval 300
 	file output.csv
