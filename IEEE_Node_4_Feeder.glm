@@ -381,7 +381,7 @@ object waterheater {
 		interval 600;
 		property is_waterheater_on, temperature, height;
 		file "wh.csv";
-	};
+	}; // always put a semicolon for the curly bracket of a nested object
 
 }
 
