@@ -191,17 +191,17 @@ object node {
 //// here are the stuff I added
 
 object triplex_meter{
-	name mr_meter
+	name mr_meter;
 	phases CS;
 	nominal voltage 120;
 
 }
 
 object house {
-	name house1
-//  panel.power_factor 0.98
+	name house1;
+//  panel.power_factor 0.98;
 	floor_area random.uniform(2500,100) sf;
-	parent mr_meter
+	parent mr_meter;
 
 }
 
@@ -221,8 +221,8 @@ tank_setpoint my_setpoint;  // dunno if I really need this
 }
 
 object multi_recorder {
-	parent house1
+	parent house1;
 	property mr_meter: measured_power.real, measured_current, measured_voltage;
-	interval 300
-	file output.csv
+	interval 300;
+	file output.csv;
 }
