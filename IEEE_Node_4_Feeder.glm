@@ -390,7 +390,7 @@ object recorder {
 	name mr_recorder;
 	parent mr_meter1;
 	property measured_power.real, measured_current_1, measured_voltage_1; // current & voltage on split phase 1
-	interval 600; // every 5 mins
+	interval 600; // every 10 mins
 	file output.csv;
 }
 
