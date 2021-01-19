@@ -88,7 +88,7 @@ object transformer_configuration {
 	name PoleTop;
 	connect_type SINGLE_PHASE_CENTER_TAPPED;
 	power_rating 400;
-	powerA_rating 400;
+	powerC_rating 400;
 	primary_voltage 2400;
 	secondary_voltage 120;
 	resistance 0.01;
@@ -188,7 +188,17 @@ object node {
 	nominal_voltage 4160;
 }
 
+
 //// here are the stuff I added
+
+object transformer{
+	name split_boi;
+	phases CS;
+	from Node4;
+	to mr_meter1;
+	configuration PoleTop;
+}
+
 
 object triplex_meter{
 	name mr_meter1;
@@ -200,7 +210,7 @@ object triplex_meter{
 
 object house {
 	name house1;
-	phases CS;
+	// no need to specify phase used, inherits parent's phase
 //  panel.power_factor 0.98;
 	floor_area random.uniform(2500,100) sf;
 	parent mr_meter1;
@@ -210,7 +220,7 @@ object house {
 object waterheater {
 	parent house1; // heater is inside the house
 	name my_waterheater;
-	phases CS;
+	// no need to specify phase used
 	temperature 120; 
 	tank_volume 50;  
 	thermostat_deadband 2; 
@@ -223,9 +233,8 @@ object waterheater {
 
 object recorder {
 	name mr_recorder;
-	phases CS;
 	parent mr_meter1;
-	property measured_power.real, measured_current, measured_voltage;
-	interval 300;
+	property measured_power.real, measured_current_1, measured_voltage_1; // current & voltage on split phase 1
+	interval 600; // every 5 mins
 	file output.csv;
 }
