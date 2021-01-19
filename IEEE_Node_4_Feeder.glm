@@ -32,6 +32,7 @@
 // Configuration objects are already set up.
 
 // After adding the water heater, run the file in both FBS and NR. What is the difference?
+// FBS - radial systems, faster. NR: radial & mesh, slower
 
 
 module tape;
