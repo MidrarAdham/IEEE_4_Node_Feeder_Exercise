@@ -197,22 +197,10 @@ object triplex_meter{
 
 }
 
-object triplex_meter{
-	name mr_meter2;
-	phases CS;
-	nominal_voltage 120;
-
-}
-
-object triplex_meter{
-	name mr_meter3;
-	phases CS;
-	nominal_voltage 120;
-
-}
 
 object house {
 	name house1;
+	phases CS;
 //  panel.power_factor 0.98;
 	floor_area random.uniform(2500,100) sf;
 	parent mr_meter1;
@@ -220,21 +208,24 @@ object house {
 }
 
 object waterheater {
-parent house1; // heater is inside the house
-name my_waterheater;
-temperature 120; 
-tank_volume 50;  
-thermostat_deadband 2; 
-heating_element_capacity 4.5 kW;
-water_demand 0.5;
-inlet_water_temperature 60;
-tank_UA 3.3;
+	parent house1; // heater is inside the house
+	name my_waterheater;
+	phases CS;
+	temperature 120; 
+	tank_volume 50;  
+	thermostat_deadband 2; 
+	heating_element_capacity 4.5 kW;
+	water_demand 0.5;
+	inlet_water_temperature 60;
+	tank_UA 3.3;
 
 }
 
-object multi_recorder {
-	parent house1;
-	property mr_meter1: measured_power.real, mr_meter2: measured_current, mr_meter3: measured_voltage;
+object recorder {
+	name mr_recorder;
+	phases CS;
+	parent mr_meter1;
+	property measured_power.real, measured_current, measured_voltage;
 	interval 300;
 	file output.csv;
 }
