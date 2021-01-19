@@ -193,7 +193,7 @@ object node {
 object triplex_meter{
 	name mr_meter;
 	phases CS;
-	nominal voltage 120;
+	nominal_voltage 120;
 
 }
 
@@ -215,8 +215,6 @@ heating_element_capacity 4.5 kW;
 water_demand 0.5;
 inlet_water_temperature 60;
 tank_UA 3.3;
-
-tank_setpoint my_setpoint;  // dunno if I really need this
 
 }
 
