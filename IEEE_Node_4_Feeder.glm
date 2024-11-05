@@ -2,10 +2,10 @@
 
 // tasks:
 
-  // Attach a house object to node 4 phase C.
+  // Attach a house object to node 4 phase B.
   // What is the difference between implicit enduses and explicit enduses in residential module?
 
-  // By default, houses have end-uses and appliances implicitly included but you can also choose to add extra 
+  // By default, houses have end-uses and appliances implicitly included, but you can also choose to add extra 
   // details by adding an explicit model which includes some features that may be absent from the implicit model
 
 
@@ -44,8 +44,8 @@ module residential {
 
 
 clock {
-	timestamp '2010-01-01 0:00:00';
-	stoptime '2010-02-01 00:00:00';
+	timestamp '2024-01-01 0:00:00';
+	stoptime '2024-02-01 00:00:00';
 	timezone PST+8PDT;
 }
 // IEEE 4 Node Feeder: Balanced step-down delta-delta
