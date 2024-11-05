@@ -35,6 +35,7 @@
 // FBS - radial systems, faster. NR: radial & mesh, slower
 
 
+#set profiler=1
 module tape;
 module powerflow;
 module residential {
