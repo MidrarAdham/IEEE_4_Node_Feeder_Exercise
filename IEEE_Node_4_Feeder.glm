@@ -38,6 +38,7 @@
 #set profiler=1
 module tape;
 module powerflow;
+module generators;
 module residential {
 	implicit_enduses NONE;
   //implicit_enduses LIGHTS|PLUGS|OCCUPANCY|DISHWASHER|MICROWAVE|FREEZER|REFRIGERATOR|RANGE|EVCHARGER|WATERHEATER|CLOTHESWASHER|DRYER;
@@ -403,4 +404,50 @@ object recorder {
 	property measured_power.real, measured_current_1, measured_voltage_1; // current & voltage on split phase 1
 	interval 600; // every 10 mins
 	file output.csv;
+}
+
+object inverter {
+	name example;
+	// parent tlx_680_c_h_19_stmtr;
+  parent mr_meter1;
+	phases CS;
+	inverter_type FOUR_QUADRANT;
+	four_quadrant_control_mode LOAD_FOLLOWING;
+	generator_status ONLINE;
+	generator_mode CONSTANT_PQ;
+  charge_on_threshold 5.0 kW; //when the load at the sense_object drops below this value the inverter starts to charge the battery.
+  charge_off_threshold 7.0 kW; //when the battery is charging and the load at the sense_object rises above this value the inverter stops charging the battery.
+  discharge_off_threshold 7.5 kW; //when the battery is discharging and the load at the sense_object drops below this value the inverter stops discharging the battery.
+  discharge_on_threshold 9.0 kW; //when the load at the sense_object rises above this value the inverter starts to discharge the battery.
+  max_discharge_rate 1 kW; //The maximum power output to demand from the battery when discharging.
+  max_charge_rate 1 kW; //The maximum power input to the battery when charging.
+  sense_object mr_meter1; //the sense_object must be a meter, triplex_meter, or transformer.
+	// volt_var_control_lockout 60;
+	inverter_efficiency 0.975;
+	// V_base ${tlx_680_c_h_19};
+	// rated_power 10000.000;
+  rated_power 2000;
+	// P_Out 0.000;
+	// Q_Out 0.000;
+	// V1 0.90;
+	// Q1 0.70;
+	// V2 0.95;
+	// Q2 0.0;
+	// V3 1.05;
+	// Q3 0.00;
+	// V4 1.10;
+	// Q4 -0.8;
+	object battery {
+		name example_battery;
+		nominal_voltage 48;
+		battery_capacity 10000.0;
+		state_of_charge 1.0000;
+		use_internal_battery_model true;
+		generator_mode CONSTANT_PQ;
+		generator_status ONLINE;
+		battery_type LI_ION;
+		round_trip_efficiency 0.86;
+		rated_power 6000.000;
+
+	};
 }
