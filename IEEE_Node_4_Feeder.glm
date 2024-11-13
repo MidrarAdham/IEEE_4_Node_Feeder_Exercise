@@ -21,7 +21,6 @@
     // Volume 50 Gallons
     // Deadband = 2F
     // Capacity 4.5 kW
-    // Water demand 0.5 gallon per minute (gpm)
     // inlet water temperature 60 F
     // tank_UA 3.3
 
