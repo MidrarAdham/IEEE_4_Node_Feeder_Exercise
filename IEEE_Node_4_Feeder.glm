@@ -50,8 +50,8 @@ class player {
 
 
 clock {
-	timestamp '2021-12-25 00:00:00';
-	stoptime '2021-12-25 23:59:00';
+	timestamp '2025-09-01 00:00:00';
+	stoptime '2025-09-01 23:59:00';
 	timezone PST8;
 }
 // IEEE 4 Node Feeder: Balanced step-down delta-delta
