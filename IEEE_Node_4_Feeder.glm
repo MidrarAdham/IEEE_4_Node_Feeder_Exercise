@@ -1,19 +1,5 @@
 // Exercise
 
-// tasks:
-	// 1) Attach a house object to node 4.
-	// 2) After completing step 1, add a ZIP load to node 4, or any other node. Change the parameter of the ZIP load and report the results.
-  // What is the difference between implicit enduses and explicit enduses in the residential module?
-
-  // By default, houses have end-uses and appliances implicitly included, but you can also choose to add extra 
-  // details by adding an explicit model which includes some features that may be absent from the implicit model
-
-
-  // Requirements:
-    // Simulation time = one day.
-    // Time Resolution = Five minutes
-    // Record Voltage, current, and Apparent & Real Power on the triplex section of the feeder
-
   // Water heater parameters:
     // location is inside the house.
     // water temperature 120 F.
@@ -27,11 +13,8 @@
   // Triplex objects parameters:
     // line lengths = 0, nominal voltages = 120 Volts
 
-
-
-// Configuration objects are already set up.
-
-// After adding the water heater, run the file in both FBS and NR. What is the difference?
+// Note that after adding the water heater, you can run the file in both FBS and NR. 
+// For your project, use NR.
 
 
 #set profiler=1
@@ -48,7 +31,7 @@ class player {
     double value;
 }
 
-
+// Adjust the timezone to Portland, OR.
 clock {
 	timestamp '2025-09-01 00:00:00';
 	stoptime '2025-09-01 23:59:00';
@@ -215,35 +198,5 @@ object triplex_meter{
 	name mr_meter1;
 	phases CS;
 	nominal_voltage 120;
-
-}
-
-object house {
-	name house1;
-	// no need to specify phase used, inherits parent's phase
-	//  panel.power_factor 0.98;
-	floor_area random.uniform(2500,100) sf;
-	parent mr_meter1;
-
-}
-
-object waterheater {
-	parent house1; // heater is inside the house
-	name my_waterheater;
-	// no need to specify phase used
-	temperature 150;
-	tank_volume 60;  
-	thermostat_deadband 2; 
-	heating_element_capacity 4.5 kW;
-	water_demand demand.value;
-	inlet_water_temperature 55;
-	tank_UA 3.3;
-
-	object recorder {
-		name Nadine;
-		interval 60;
-		property is_waterheater_on, temperature, height, water_demand;
-		file "wh.csv";
-	}; // always put a semicolon for the curly bracket of a nested object
 
 }
